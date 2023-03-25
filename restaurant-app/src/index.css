@@ -1,13 +1,55 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Source+Serif+Pro:wght@200;300;400;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body::-webkit-scrollbar {
+  display: none;
+}
+body {
+  font-size: 16px;
+  background-color: #eae5d8;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Source Serif Pro", serif;
+  font-weight: 200;
+}
+
+p,
+a,
+.button-txt {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+}
+
+.button-txt {
+  font-weight: 500;
+}
+
+.heading-hightlight {
+  font-weight: 400;
+}
+
+.fa-brands {
+  font-size: 30px;
+  color: white;
+}
+
+.border-btn {
+  height: 50px;
+  width: 200px;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
 }
