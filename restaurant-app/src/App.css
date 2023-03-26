@@ -76,7 +76,6 @@
 
 .page-title > h1 {
   font-size: 40px;
-  letter-spacing: 0.05em;
 }
 
 .page-title > h2 {
@@ -93,11 +92,6 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-}
-
-.white-slide-btn {
-  border: 1px solid white;
-  color: white;
 }
 
 .arrow-hero {
@@ -117,12 +111,46 @@ main {
     / minmax(375px, 100vw);
 }
 
+.about-section {
+  display: grid;
+  grid-template: 800px 450px/ 375px;
+  justify-content: center;
+}
+.about-section > section {
+  padding: 50px 40px;
+}
+
+.about-section .border-btn {
+  margin-top: 40px;
+}
+
+.about-section > figure {
+  background-image: url("./images/about-image.png");
+  background-size: 325px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  position: relative;
+  width: 100%;
+}
+
+.about-image {
+  position: absolute;
+  top: 0;
+  transform: scale(0.5);
+}
+
 .about-title {
   font-size: 2rem;
+  margin-bottom: 50px;
 }
 
 .about-title > span {
   font-weight: 400;
+}
+
+.about-description {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
 }
 
 .page-contact {
@@ -167,6 +195,7 @@ main {
   width: 100%;
   border: none;
 }
+
 .page-footer {
   color: #f9f6ee;
   background-color: #161615;
@@ -198,6 +227,7 @@ main {
 .links > a {
   font-size: 20px;
 }
+
 @media only screen and (min-width: 768px) {
   .page-header {
     height: 100px;

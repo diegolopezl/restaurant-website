@@ -24,6 +24,7 @@ h3,
 h4 {
   font-family: "Source Serif Pro", serif;
   font-weight: 200;
+  letter-spacing: 0.05em;
 }
 
 p,
@@ -33,23 +34,57 @@ a,
   font-size: 1rem;
 }
 
-.button-txt {
-  font-weight: 500;
-}
-
-.heading-hightlight {
-  font-weight: 400;
-}
-
-.fa-brands {
-  font-size: 30px;
-  color: white;
-}
-
 .border-btn {
+  position: relative;
   height: 50px;
   width: 200px;
   background-color: transparent;
   font-family: "Montserrat", sans-serif;
+  font-weight: 500;
   font-size: 1rem;
+  z-index: 0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.white-slide-btn:hover::before,
+.black-slide-btn:hover::before {
+  width: 100%;
+}
+
+.white-slide-btn::before,
+.black-slide-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  z-index: -1;
+  transition: all 0.25s;
+}
+
+.white-slide-btn {
+  border: 1px solid #f9f6ee;
+  color: #f9f6ee;
+}
+
+.black-slide-btn {
+  border: 1px solid #161615;
+  color: #161615;
+}
+
+.black-slide-btn:hover {
+  color: #f9f6ee;
+}
+.white-slide-btn:hover {
+  color: #161615;
+}
+
+.white-slide-btn::before {
+  background-color: #f9f6ee;
+}
+
+.black-slide-btn::before {
+  background-color: #161615;
 }

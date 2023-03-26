@@ -18,10 +18,10 @@ export default function MainContent() {
             Vera Pizza en Napoli, Italia. La unica pizzeria certificada en
             Republica Dominicana.
           </p>
+          <p>Ver Mas</p>
+          <button className="black-slide-btn border-btn">DIRECCION</button>
         </section>
-        <figure>
-          <img src={aboutImg} alt="owner and pizza" />
-        </figure>
+        <figure></figure>
       </article>
       <section>
         <div></div>
