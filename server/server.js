@@ -13,11 +13,11 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
   if (err) {
-    console.error("Error connecting to database: ", err);
+    console.error("Connection Error: ", err);
     return;
   }
 
-  console.log("Connected to database!");
+  console.log("Connection successfull");
 });
 
 app.post("/api/reservation", (req, res) => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ReservationForm() {
+export default function ReservationForm() {
   const [name, setName] = useState("");
   const [numPeople, setNumPeople] = useState("");
   const [date, setDate] = useState("");
@@ -19,7 +19,7 @@ function ReservationForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="reserve-form" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="NOMBRE"
@@ -27,7 +27,7 @@ function ReservationForm() {
         onChange={(e) => setName(e.target.value)}
       />
       <input
-        type="number"
+        type="text"
         placeholder="CANT. DE PERSONAS"
         value={numPeople}
         onChange={(e) => setNumPeople(e.target.value)}
@@ -44,9 +44,9 @@ function ReservationForm() {
         value={time}
         onChange={(e) => setTime(e.target.value)}
       />
-      <button type="submit">Submit</button>
+      <button type="submit" className="white-slide-btn border-btn">
+        RESERVAR
+      </button>
     </form>
   );
 }
-
-export default ReservationForm;
