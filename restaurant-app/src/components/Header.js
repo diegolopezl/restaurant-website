@@ -6,6 +6,11 @@ export default function Header({ position }) {
   const [showNav, setShowNav] = useState(false);
   const toggleNav = () => {
     setShowNav(!showNav);
+    if (!showNav) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
   };
   return (
     <header className="page-header" style={{ position }}>

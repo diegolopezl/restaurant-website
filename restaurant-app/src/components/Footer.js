@@ -4,10 +4,10 @@ export default function Footer() {
       <div className="footer-line"></div>
       <div className="footer-items">
         <div className="links">
-          <a>HOME</a>
-          <a>MENU</a>
-          <a>ABOUT</a>
-          <a>CONTACTO</a>
+          <a href="#home">HOME</a>
+          <a href="#menu">MENU</a>
+          <a href="#about">ABOUT</a>
+          <a href="#contact">CONTACTO</a>
         </div>
         <div className="copyright">
           <p>2023 © IL CAMINETTO</p>
