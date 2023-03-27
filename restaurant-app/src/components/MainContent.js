@@ -1,18 +1,13 @@
 import Menu from "./Menu";
 import About from "./About";
+import Reserve from "./Reserve";
 
 export default function MainContent() {
   return (
     <main>
       <About />
       <Menu />
-      <section>
-        <div></div>
-        <div>
-          <form></form>
-          <div></div>
-        </div>
-      </section>
+      <Reserve />
       <section>
         <div></div>
         <section></section>
