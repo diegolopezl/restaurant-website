@@ -28,14 +28,18 @@ export default function Contact() {
     try {
       await axios.post("/api/send-email", formData);
       setFormSubmitted(true);
+      setFormError(false);
     } catch (error) {
       console.log(error);
       setFormError(true);
+      setFormSubmitted(false);
     }
   };
 
   const toggleForm = () => {
     setContactForm(!contactForm);
+    setFormError(false);
+    setFormSubmitted(false);
   };
 
   if (contactForm) {
@@ -59,8 +63,20 @@ export default function Contact() {
           <FaEnvelope /> ilcaminettord@gmail.com
         </p>
         <div className="social-media">
-          <FaInstagram />
-          <FaFacebookSquare />
+          <a
+            href="https://www.instagram.com/ilcaminettord/?hl=en"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://web.facebook.com/ilcaminettord/?_rdc=1&_rdr"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaFacebookSquare />
+          </a>
         </div>
         <button
           className="white-slide-btn border-btn show-contact-form"
@@ -125,9 +141,11 @@ export default function Contact() {
                 Error al enviar el mensaje. Inténtelo de nuevo más tarde.
               </p>
             )}
-            <button type="submit" className="black-slide-btn border-btn">
-              ENVIAR
-            </button>
+            {!formSubmitted && !formError && (
+              <button type="submit" className="black-slide-btn border-btn">
+                ENVIAR
+              </button>
+            )}
           </form>
         </div>
       )}

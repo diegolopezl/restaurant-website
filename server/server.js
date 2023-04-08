@@ -54,8 +54,8 @@ const transporter = nodemailer.createTransport({
   host: "smtp.ethereal.email",
   port: 587,
   auth: {
-    user: "leonor22@ethereal.email",
-    pass: "k6S1bX18fEJ6CHdbFd",
+    user: process.env.MAIL_USERNAME,
+    pass: process.env.MAIL_PASSWORD,
   },
 });
 
@@ -66,7 +66,7 @@ app.post("/api/send-email", (req, res) => {
   // Define email options
   const mailOptions = {
     from: name,
-    to: "leonor22@ethereal.email",
+    to: process.env.MAIL_USERNAME,
     subject: subject,
     text: `Mensaje de ${name} (${email}) \n
     ${message}`,

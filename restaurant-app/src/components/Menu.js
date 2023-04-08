@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 export default function MenuSection() {
   const menuImages = [
     require("../images/antipasti.png"),
@@ -16,6 +17,7 @@ export default function MenuSection() {
   ];
 
   const [selectedImage, setSelectedImage] = useState(null);
+
   return (
     <section className="menu-section">
       <div className="menu-top">
@@ -42,7 +44,13 @@ export default function MenuSection() {
         ))}
       </figure>
       <div className="menu-bottom">
-        <button className="white-slide-btn border-btn">VER MENU</button>
+        <a
+          href="https://bocao.com.do/restaurantes/il-caminetto"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <button className="white-slide-btn border-btn">VER MENU</button>
+        </a>
       </div>
     </section>
   );
