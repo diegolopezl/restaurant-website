@@ -1,10 +1,49 @@
+import { useState } from "react";
 import {
   FaFacebookSquare,
   FaInstagram,
   FaEnvelope,
   FaPhone,
 } from "react-icons/fa";
+import { HiXMark } from "react-icons/hi2";
+import axios from "axios";
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formError, setFormError] = useState(false);
+  const [contactForm, setContactForm] = useState(false);
+
+  const handleInputChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post("/api/send-email", formData);
+      setFormSubmitted(true);
+    } catch (error) {
+      console.log(error);
+      setFormError(true);
+    }
+  };
+
+  const toggleForm = () => {
+    setContactForm(!contactForm);
+  };
+
+  if (contactForm) {
+    document.body.classList.add("show-form");
+  } else {
+    document.body.classList.remove("show-form");
+  }
+
   return (
     <section className="page-contact">
       <article className="contact-info">
@@ -23,7 +62,10 @@ export default function Contact() {
           <FaInstagram />
           <FaFacebookSquare />
         </div>
-        <button className="white-slide-btn border-btn">
+        <button
+          className="white-slide-btn border-btn show-contact-form"
+          onClick={toggleForm}
+        >
           ENVIANOS UN MENSAJE
         </button>
       </article>
@@ -34,6 +76,61 @@ export default function Contact() {
           src="https://snazzymaps.com/embed/473738"
         ></iframe>
       </div>
+      {contactForm && (
+        <div className="modal">
+          <div onClick={toggleForm} className="overlay"></div>
+
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <button className="hide-form" onClick={toggleForm}>
+              <HiXMark />
+            </button>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              onChange={handleInputChange}
+              placeholder="NOMBRE"
+              required
+            />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              onChange={handleInputChange}
+              placeholder="CORREO ELECTRONICO"
+              required
+            />
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              onChange={handleInputChange}
+              placeholder="ASUNTO"
+              required
+            />
+            <textarea
+              id="message"
+              name="message"
+              onChange={handleInputChange}
+              placeholder="MENSAJE"
+              required
+            ></textarea>
+            {formSubmitted && (
+              <p className="contact-feedback success-message">
+                Gracias por contactarnos. Te responderemos pronto.
+              </p>
+            )}
+            {formError && (
+              <p className="contact-feedback error-message">
+                Error al enviar el mensaje. Inténtelo de nuevo más tarde.
+              </p>
+            )}
+            <button type="submit" className="black-slide-btn border-btn">
+              ENVIAR
+            </button>
+          </form>
+        </div>
+      )}
     </section>
   );
 }

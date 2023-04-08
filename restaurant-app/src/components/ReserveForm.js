@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ReservationForm() {
+export default function ReserveForm() {
   const [name, setName] = useState("");
   const [numPeople, setNumPeople] = useState("");
   const [date, setDate] = useState("");
@@ -28,7 +28,7 @@ export default function ReservationForm() {
       />
       <input
         type="text"
-        placeholder="CANT. DE PERSONAS"
+        placeholder="NUMERO DE PERSONAS"
         value={numPeople}
         onChange={(e) => setNumPeople(e.target.value)}
       />

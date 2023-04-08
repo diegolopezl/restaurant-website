@@ -1,5 +1,11 @@
 import arrow from "../images/arrow-hero.svg";
 export default function Hero() {
+  const handleClick = () => {
+    window.scrollTo({
+      top: 3100,
+      behavior: "smooth",
+    });
+  };
   return (
     <section className="page-hero">
       <div className="page-title">
@@ -7,7 +13,9 @@ export default function Hero() {
         <h2>── FRANCESCO CURCIO ──</h2>
       </div>
       <div className="call-to-action">
-        <button className="white-slide-btn border-btn">RESERVA AHORA</button>
+        <button className="white-slide-btn border-btn" onClick={handleClick}>
+          RESERVA AHORA
+        </button>
         <img className="arrow-hero" src={arrow} alt="arrow" />
       </div>
     </section>

@@ -16,6 +16,13 @@ export default function About() {
     const description = document.querySelector(".about-description");
     description.classList.toggle("expanded");
   };
+
+  const handleClick = () => {
+    window.scrollTo({
+      top: 4650,
+      behavior: "smooth",
+    });
+  };
   return (
     <article className="about-section">
       <section>
@@ -71,7 +78,9 @@ export default function About() {
           )}
         </div>
         <div className="about-bottom">
-          <button className="black-slide-btn border-btn">DIRECCION</button>
+          <button className="black-slide-btn border-btn" onClick={handleClick}>
+            DIRECCION
+          </button>
           <div className="corner-box bottom-right"></div>
         </div>
       </section>

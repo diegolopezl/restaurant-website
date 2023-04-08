@@ -7,6 +7,14 @@ export default function MenuSection() {
     require("../images/calzoni.png"),
     require("../images/dolci.png"),
   ];
+  const menuText = [
+    "LE CLASICHE",
+    "I NOSTRI CALZONI",
+    "ANTIPASTI",
+    "LE NOSTRE PIZZE",
+    "I DOLCI",
+  ];
+
   const [selectedImage, setSelectedImage] = useState(null);
   return (
     <section className="menu-section">
@@ -17,6 +25,11 @@ export default function MenuSection() {
         </h1>
       </div>
       <figure className="menu-middle">
+        {menuText.map((text, index) => (
+          <h2 key={index} className="menu-text">
+            {text}
+          </h2>
+        ))}
         {[...Array(5)].map((_, i) => (
           <div
             key={i}

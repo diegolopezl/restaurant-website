@@ -1,21 +1,22 @@
-import Form from "./Form";
+import ReserveForm from "./ReserveForm";
 export default function Reserve() {
   return (
     <section className="reserve-section">
+      <div id="res"></div>
       <div className="blur-bg"></div>
       <div className="reserve-top">
         <h1>RESERVA UNA MESA</h1>
       </div>
       <div className="reserve-bottom">
-        <Form />
+        <ReserveForm />
         <div className="time-info">
           <h4>HORARIO</h4>
           <div>
-            <div>
+            <div className="horario">
               <p>Lunes a Jueves & Domingo</p>
               <p>12:00pm a 10:45pm</p>
             </div>
-            <div>
+            <div className="horario">
               <p>Viernes & Sabado</p>
               <p>12:00pm a 11:00pm </p>
             </div>
