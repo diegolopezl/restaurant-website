@@ -507,6 +507,98 @@ main {
 }
 
 @media only screen and (min-width: 768px) {
+  .login-card {
+    background-color: white;
+    border-radius: 20px;
+    width: 400px;
+    height: 450px;
+    padding: 0 50px;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .login-form,
+  .login-form > input,
+  .login-btn {
+    font-family: Montserrat, sans-serif;
+  }
+
+  .login-form > input {
+    padding: 10px 15px;
+  }
+
+  .password-input-container > input {
+    padding: 10px 5px;
+  }
+
+  .login-form > input,
+  .password-input-container {
+    height: 40px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    font-size: 0.75rem;
+  }
+
+  .password-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .password-input-container > input {
+    border: none;
+    height: 40px;
+    width: 250px;
+    background-color: transparent;
+  }
+  .show-password-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    height: 30px;
+    width: 30px;
+    font-size: 1.25rem;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .remember-user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .remember-user > input {
+    height: 20px;
+    width: 20px;
+    margin-left: 15px;
+  }
+
+  .remember-user > label {
+    font-size: 1rem;
+    opacity: 0.5;
+  }
+
+  .login-btn {
+    width: 300px;
+    height: 50px;
+    border: none;
+    background-color: #6373ff;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
   .page-header {
     height: 100px;
   }
