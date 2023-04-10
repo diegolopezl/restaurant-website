@@ -511,8 +511,9 @@ main {
     background-color: white;
     border-radius: 20px;
     width: 400px;
-    height: 450px;
+    height: 100%;
     padding: 0 50px;
+    padding-bottom: 25px;
   }
 
   .login-form {
@@ -534,6 +535,10 @@ main {
 
   .password-input-container > input {
     padding: 10px 5px;
+  }
+
+  .login-form input:focus {
+    outline: none;
   }
 
   .login-form > input,
@@ -559,6 +564,7 @@ main {
     width: 250px;
     background-color: transparent;
   }
+
   .show-password-btn {
     display: flex;
     align-items: center;

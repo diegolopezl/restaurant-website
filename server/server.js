@@ -11,6 +11,10 @@ app.use(express.json());
 const cors = require("cors");
 app.use(cors());
 
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 // Database connection
 const connection = mysql.createConnection({
   host: "localhost",
@@ -46,6 +50,21 @@ app.post("/api/reservation", (req, res) => {
 
     console.log(`Reservation for ${name} inserted into database`);
     res.json({ message: "Reservation inserted into database" });
+  });
+});
+
+app.post("/api/login", (req, res) => {
+  const { username, password } = req.body;
+  const query = `SELECT * FROM users WHERE usuario='${username}' AND pass='${password}'`;
+
+  connection.query(query, (error, results, fields) => {
+    if (error) throw error;
+
+    if (results.length > 0) {
+      res.send({ success: true });
+    } else {
+      res.send({ success: false, message: "Invalid credentials." });
+    }
   });
 });
 

@@ -1,12 +1,57 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RxEyeOpen, RxEyeClosed } from "react-icons/rx";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberUser, setRememberUser] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("rememberedUser");
+    if (storedUsername) {
+      setUsername(storedUsername);
+      setRememberUser(true);
+    }
+  }, []);
 
   function toggleShowPassword() {
     setShowPassword(!showPassword);
+  }
+
+  function handleRememberUserChange(event) {
+    setRememberUser(event.target.checked);
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      console.log("response data:", data);
+      if (data.success) {
+        if (rememberUser) {
+          localStorage.setItem("rememberedUser", username);
+        } else {
+          localStorage.removeItem("rememberedUser");
+        }
+        // Redirect to dashboard
+        window.location.href = "/dashboard";
+      } else {
+        setLoginError(data.message);
+      }
+    } catch (error) {
+      console.log("fetch error:", error);
+      setLoginError("An error occurred. Please try again later.");
+    }
   }
 
   return (
@@ -16,12 +61,14 @@ export default function Login() {
           <h1>¡Bienvenido de vuelta!</h1>
           <p>Ingrese sus credenciales para continuar al panel de control.</p>
         </div>
-        <form className="login-form">
+        <form className="login-form" onSubmit={handleSubmit}>
           <input
             type="text"
             id="username-input"
             name="username"
             placeholder="Ingrese su Usuario"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
             required
           />
           <div className="password-input-container">
@@ -30,6 +77,8 @@ export default function Login() {
               id="password-input"
               name="password"
               placeholder="●●●●●●●●●●●●●●"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
               required
             />
             <button
@@ -45,9 +94,12 @@ export default function Login() {
               type="checkbox"
               id="remember-user-checkbox"
               name="remember-user"
+              checked={rememberUser}
+              onChange={handleRememberUserChange}
             />
             <label htmlFor="remember-user-checkbox">Recordar Usuario</label>
           </div>
+          {loginError && <p className="login-error">{loginError}</p>}
           <button type="submit" className="login-btn">
             Iniciar Sesión
           </button>
