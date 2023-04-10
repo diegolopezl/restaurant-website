@@ -537,6 +537,12 @@ main {
     padding: 10px 15px;
   }
 
+  .back-home-btn {
+    color: black;
+    display: flex;
+    justify-content: center;
+  }
+
   .password-input-container > input {
     padding: 10px 5px;
   }

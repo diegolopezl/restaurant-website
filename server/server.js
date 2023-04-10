@@ -68,6 +68,40 @@ app.post("/api/login", (req, res) => {
   });
 });
 
+// Send email function
+app.post("/api/send-email", (req, res) => {
+  const { name, subject, email, message } = req.body;
+
+  const transporter = nodemailer.createTransport({
+    host: "smtp.ethereal.email",
+    port: 587,
+    auth: {
+      user: "leonor22@ethereal.email",
+      pass: "k6S1bX18fEJ6CHdbFd",
+    },
+  });
+
+  // Define email options
+  const mailOptions = {
+    from: name,
+    to: process.env.MAIL_USERNAME,
+    subject: subject,
+    text: `Mensaje de ${name} (${email}) \n
+    ${message}`,
+  };
+
+  // Send email
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send("Oops, something went wrong...");
+    } else {
+      console.log("Email sent: " + info.response);
+      res.status(200).send("Email sent successfully!");
+    }
+  });
+});
+
 app.get("/api/reservations", (req, res) => {
   connection.query("SELECT * FROM reservaciones", (err, rows) => {
     if (err) {
@@ -104,31 +138,6 @@ app.put("/api/reservations/:id", (req, res) => {
       // send the updated reservation object in the response
       res.send(result[0]);
     });
-  });
-});
-
-// Send email function
-app.post("/api/send-email", (req, res) => {
-  const { name, subject, email, message } = req.body;
-
-  // Define email options
-  const mailOptions = {
-    from: name,
-    to: process.env.MAIL_USERNAME,
-    subject: subject,
-    text: `Mensaje de ${name} (${email}) \n
-    ${message}`,
-  };
-
-  // Send email
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-      res.status(500).send("Oops, something went wrong...");
-    } else {
-      console.log("Email sent: " + info.response);
-      res.status(200).send("Email sent successfully!");
-    }
   });
 });
 

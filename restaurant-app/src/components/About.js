@@ -17,11 +17,10 @@ export default function About() {
     description.classList.toggle("expanded");
   };
 
-  const handleClick = () => {
-    window.scrollTo({
-      top: 4650,
-      behavior: "smooth",
-    });
+  const handleContactClick = (event) => {
+    event.preventDefault();
+    const reserveSection = document.getElementById("contact");
+    reserveSection.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <article id="about" className="about-section">
@@ -78,9 +77,14 @@ export default function About() {
           )}
         </div>
         <div className="about-bottom">
-          <button className="black-slide-btn border-btn" onClick={handleClick}>
-            DIRECCION
-          </button>
+          <a href="#contact">
+            <button
+              className="black-slide-btn border-btn"
+              onClick={handleContactClick}
+            >
+              DIRECCION
+            </button>
+          </a>
           <div className="corner-box bottom-right"></div>
         </div>
       </section>

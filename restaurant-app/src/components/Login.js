@@ -44,8 +44,6 @@ export default function Login({ setAuth }) {
         } else {
           localStorage.removeItem("rememberedUser");
         }
-        // Redirect to dashboard
-        setAuth({ token: true });
         navigate("/dashboard");
       } else {
         setLoginError(data.message);
