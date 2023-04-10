@@ -3,7 +3,11 @@
 import React from "react";
 
 const Dashboard = () => {
-  return <div className="dashboard-inner-content">Here goes the dashboard</div>;
+  return (
+    <div className="dashboard-inner-content dashboard-dashboard">
+      <p>No data.</p>
+    </div>
+  );
 };
 
 export default Dashboard;

@@ -641,8 +641,8 @@ main {
   .dashboard-sidebar > h2 {
     font-size: 2rem;
     font-family: Montserrat, sans-serif;
-    font-weight: 500;
-    margin-left: 40px;
+    font-weight: 700;
+    margin-left: 25px;
   }
 
   .dashboard-header {
@@ -681,23 +681,64 @@ main {
     font-size: 1.25rem;
     margin-right: 15px;
   }
+
   .active-link {
     background-color: #343239;
   }
 
+  .dashboard-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .dashboard-inner-content {
     background-color: white;
-    height: 500px;
+    height: 540px;
     margin: 20px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
   }
 
-  .reservations {
-    display: flex;
-    justify-content: center;
+  .reservation-stats {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 20px;
     align-items: center;
+  }
+
+  .reservation-stats-item {
+    height: 100px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+  }
+
+  .stat-icon {
+    font-size: 2.5rem;
+    color: rgb(84, 84, 197);
+  }
+  .res-amt,
+  .res-type {
+    font-family: Montserrat, sans-serif;
+  }
+
+  .res-amt {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .res-type {
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+  .reservations {
+    height: 430px;
+    overflow-y: scroll;
   }
 
   .reservation-grid {
@@ -707,12 +748,16 @@ main {
     grid-template-columns: 75px repeat(6, 1fr);
     gap: 10px;
     background-color: white;
-    padding: 10px;
+    padding: 30px;
   }
 
+  .reservation-rows {
+    overflow-y: scroll;
+  }
   .grid-header {
     font-weight: bold;
     text-align: left;
+    z-index: 1;
   }
 
   .table-data {
@@ -722,14 +767,30 @@ main {
     height: 50px;
   }
 
-  .reservation-rows {
-    border-top: 1px solid #d9d9d9;
-    border-bottom: 1px solid #d9d9d9;
+  .action-col {
+    display: flex;
+    gap: 15px;
   }
 
-  .reservation-action {
-    display: flex;
-    justify-content: space-around;
+  .action-col > button {
+    background-color: transparent;
+    border: none;
+  }
+
+  .action-btn {
+    font-size: 1.5rem;
+  }
+
+  .done-btn {
+    color: rgb(106, 234, 106);
+  }
+
+  .cancel-btn {
+    color: rgb(198, 26, 26);
+  }
+
+  .pending-btn {
+    color: rgb(255, 208, 0);
   }
 
   .add-reservation-form {

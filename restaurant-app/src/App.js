@@ -4,6 +4,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import MainContent from "./components/MainContent";
@@ -43,6 +44,19 @@ function Home() {
 
 function DashboardLayout() {
   const location = useLocation();
+  const [isMobile, setIsMobile] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   let title = "Dashboard";
   if (location.pathname === "/dashboard/reservations") {
@@ -52,16 +66,22 @@ function DashboardLayout() {
   }
 
   return (
-    <section className="dashboard">
-      <Sidebar />
-      <DashboardHeader title={title} />
-      <div className="dashboard-content">
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/reservations" element={<ViewReservations />} />
-          <Route path="/add" element={<AddReservations />} />
-        </Routes>
-      </div>
-    </section>
+    <>
+      {isMobile ? (
+        <p>No access for mobile devices</p>
+      ) : (
+        <section className="dashboard">
+          <Sidebar />
+          <DashboardHeader title={title} />
+          <div className="dashboard-content">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/reservations" element={<ViewReservations />} />
+              <Route path="/add" element={<AddReservations />} />
+            </Routes>
+          </div>
+        </section>
+      )}
+    </>
   );
 }

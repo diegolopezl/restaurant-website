@@ -82,7 +82,7 @@ app.get("/api/reservations", (req, res) => {
 
 app.put("/api/reservations/:id", (req, res) => {
   const id = req.params.id;
-  const newStatus = req.body.status;
+  const newStatus = req.body.estado; // changed to "estado"
 
   const sql = "UPDATE reservaciones SET estado = ? WHERE reservaID = ?";
   connection.query(sql, [newStatus, id], (err, result) => {
@@ -92,18 +92,19 @@ app.put("/api/reservations/:id", (req, res) => {
       return;
     }
 
-    res.send("Reservation status updated successfully");
-  });
-});
+    // get the updated reservation object
+    const sql2 = "SELECT * FROM reservaciones WHERE reservaID = ?";
+    connection.query(sql2, [id], (err, result) => {
+      if (err) {
+        console.error("Error fetching updated reservation: ", err);
+        res.status(500).send("Error fetching updated reservation");
+        return;
+      }
 
-// Create nodemailer transporter
-const transporter = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
-  port: 587,
-  auth: {
-    user: process.env.MAIL_USERNAME,
-    pass: process.env.MAIL_PASSWORD,
-  },
+      // send the updated reservation object in the response
+      res.send(result[0]);
+    });
+  });
 });
 
 // Send email function
