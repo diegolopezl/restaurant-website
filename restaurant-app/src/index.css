@@ -8,15 +8,20 @@
   text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body::-webkit-scrollbar {
   display: none;
 }
+
 body {
   font-size: 16px;
   background-color: #eae5d8;
   overflow-x: hidden;
+  overflow-y: scroll;
   scrollbar-width: none;
-  scroll-behavior: smooth;
 }
 
 h1,

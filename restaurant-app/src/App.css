@@ -306,6 +306,10 @@ main {
   margin-top: 75px;
 }
 
+.reserve-feedback {
+  color: white;
+}
+
 .time-info {
   color: #f9f6ee;
   width: 100%;
@@ -605,6 +609,163 @@ main {
     margin-top: 15px;
     margin-bottom: 20px;
   }
+
+  .dashboard {
+    font-family: Montserrat, sans-serif;
+    display: grid;
+    grid-template: 150px 1fr / 300px 1fr;
+    grid-template-areas: "sidebar header" "sidebar inner";
+  }
+
+  .db-title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  .dashboard-content {
+    background-color: #f8f8f8;
+    grid-area: inner;
+  }
+
+  .dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: #252428;
+    height: 100vh;
+    color: white;
+    display: grid;
+    grid-template-rows: 100px 180px 100%;
+    align-items: center;
+  }
+
+  .dashboard-sidebar > h2 {
+    font-size: 2rem;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    margin-left: 40px;
+  }
+
+  .dashboard-header {
+    grid-area: header;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 0 40px;
+  }
+
+  .dashboard-routes {
+    display: grid;
+    grid-template-rows: repeat(3, 60px);
+    margin-top: 20px;
+  }
+
+  .dashboard-link {
+    color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    font-size: 1rem;
+  }
+
+  .back-home {
+    justify-self: center;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+
+  .dashboard-route-icon {
+    font-size: 1.25rem;
+    margin-right: 15px;
+  }
+  .active-link {
+    background-color: #343239;
+  }
+
+  .dashboard-inner-content {
+    background-color: white;
+    height: 500px;
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reservations {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .reservation-grid {
+    margin: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 75px repeat(6, 1fr);
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+  }
+
+  .grid-header {
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .table-data {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    height: 50px;
+  }
+
+  .reservation-rows {
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+  }
+
+  .reservation-action {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .add-reservation-form {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 50px;
+  }
+
+  .add-reservation-form > button {
+    height: 60px;
+    width: 200px;
+    border: none;
+    color: white;
+    background-color: #3e7bf2;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-top: 30px;
+    transition: all 0.25s ease-in-out;
+  }
+
+  .add-reservation-form > button:hover {
+    background-color: #346ad4;
+    cursor: pointer;
+  }
+
+  .add-reservation-form > input {
+    height: 50px;
+    font-family: Montserrat, sans-serif;
+    padding: 0 10px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    color: black;
+    border: none;
+  }
   .page-header {
     height: 100px;
   }
@@ -803,12 +964,15 @@ main {
   }
 
   .order-txt {
-    padding-top: 200px;
+    width: 750px;
     align-items: center;
+    justify-content: right;
+    padding: 250px 0;
+    gap: 30px;
+    padding-right: 50px;
   }
-
   .order-middle {
-    width: 500px;
+    width: 550px;
     justify-self: right;
   }
 

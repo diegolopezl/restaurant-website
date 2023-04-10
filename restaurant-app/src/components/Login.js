@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { RxEyeOpen, RxEyeClosed } from "react-icons/rx";
 
-export default function Login() {
+export default function Login({ setAuth }) {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [rememberUser, setRememberUser] = useState(false);
   const [username, setUsername] = useState("");
@@ -37,14 +38,15 @@ export default function Login() {
       });
       const data = await response.json();
       console.log("response data:", data);
-      if (data.success) {
+      if (response.ok) {
         if (rememberUser) {
           localStorage.setItem("rememberedUser", username);
         } else {
           localStorage.removeItem("rememberedUser");
         }
         // Redirect to dashboard
-        window.location.href = "/dashboard";
+        setAuth({ token: true });
+        navigate("/dashboard");
       } else {
         setLoginError(data.message);
       }

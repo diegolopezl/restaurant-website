@@ -1,7 +1,7 @@
 import ReserveForm from "./ReserveForm";
 export default function Reserve() {
   return (
-    <section className="reserve-section">
+    <section id="reserve" className="reserve-section">
       <div id="res"></div>
       <div className="blur-bg"></div>
       <div className="reserve-top">

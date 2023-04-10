@@ -12,6 +12,15 @@ export default function Header({ position }) {
       document.body.style.overflow = "";
     }
   };
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    const targetId = event.currentTarget.getAttribute("href");
+    const targetElement = document.querySelector(targetId);
+    targetElement.scrollIntoView({ behavior: "smooth" });
+    toggleNav();
+  };
+
   return (
     <header className="page-header" style={{ position }}>
       <button className="nav-btn nav-toggle" onClick={toggleNav}>
@@ -20,16 +29,24 @@ export default function Header({ position }) {
       <nav ref={navbarRef} className={`nav-bar ${showNav ? "show-nav" : ""}`}>
         <ul>
           <li>
-            <a href="#home">HOME</a>
+            <a href="#home" onClick={handleClick}>
+              HOME
+            </a>
           </li>
           <li>
-            <a href="#menu">MENU</a>
+            <a href="#menu" onClick={handleClick}>
+              MENU
+            </a>
           </li>
           <li>
-            <a href="#about">ABOUT</a>
+            <a href="#about" onClick={handleClick}>
+              ABOUT
+            </a>
           </li>
           <li>
-            <a href="#contact">CONTACTO</a>
+            <a href="#contact" onClick={handleClick}>
+              CONTACTO
+            </a>
           </li>
         </ul>
       </nav>

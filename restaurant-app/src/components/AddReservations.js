@@ -38,39 +38,37 @@ export default function ReserveForm() {
   }
 
   return (
-    <form className="reserve-form" onSubmit={handleSubmit}>
-      {formSubmitted ? (
-        <p className="reserve-feedback">Su reservacion ha sido enviada!</p>
-      ) : (
-        <p className="reserve-feedback error">{errorMessage}</p>
-      )}
-      <input
-        type="text"
-        placeholder="NOMBRE"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="NUMERO DE PERSONAS"
-        value={numPeople}
-        onChange={(e) => setNumPeople(e.target.value)}
-      />
-      <input
-        type="date"
-        placeholder="DIA"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-      />
-      <input
-        type="time"
-        placeholder="HORA"
-        value={time}
-        onChange={(e) => setTime(e.target.value)}
-      />
-      <button type="submit" className="white-slide-btn border-btn">
-        RESERVAR
-      </button>
-    </form>
+    <div className="dashboard-inner-content">
+      <form className="add-reservation-form" onSubmit={handleSubmit}>
+        {formSubmitted ? (
+          <p className="reserve-feedback">Su reservacion ha sido enviada!</p>
+        ) : (
+          <p className="reserve-feedback error">{errorMessage}</p>
+        )}
+        <input
+          type="text"
+          placeholder="Nombre de la Reserva"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Cantidad de Personas"
+          value={numPeople}
+          onChange={(e) => setNumPeople(e.target.value)}
+        />
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+        <input
+          type="time"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+        />
+        <button type="submit">Agregar Reservacion</button>
+      </form>
+    </div>
   );
 }

@@ -49,7 +49,7 @@ export default function Contact() {
   }
 
   return (
-    <section className="page-contact">
+    <section id="contact" className="page-contact">
       <article className="contact-info">
         <h1>CONTACTO</h1>
         <p>

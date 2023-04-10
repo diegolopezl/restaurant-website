@@ -19,7 +19,7 @@ export default function MenuSection() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <section className="menu-section">
+    <section id="menu" className="menu-section">
       <div className="menu-top">
         <h1 className="section-title">
           EXPLORA EL <br />

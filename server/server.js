@@ -39,7 +39,7 @@ app.post("/api/reservation", (req, res) => {
 
   // SQL Query to insert input into reservations table
   const sql =
-    "INSERT INTO reservaciones (nombre, num_personas, dia, tiempo) VALUES (?, ?, ?, ?)";
+    "INSERT INTO reservaciones (nombre, num_personas, estado, dia, tiempo) VALUES (?, ?, 'Pending', ?, ?)";
   const values = [name, numPeople, date, time];
 
   connection.query(sql, values, (err, result) => {
@@ -65,6 +65,34 @@ app.post("/api/login", (req, res) => {
     } else {
       res.send({ success: false, message: "Invalid credentials." });
     }
+  });
+});
+
+app.get("/api/reservations", (req, res) => {
+  connection.query("SELECT * FROM reservaciones", (err, rows) => {
+    if (err) {
+      console.error("Error retrieving reservations: ", err);
+      res.status(500).send("Error retrieving reservations");
+      return;
+    }
+
+    res.json(rows);
+  });
+});
+
+app.put("/api/reservations/:id", (req, res) => {
+  const id = req.params.id;
+  const newStatus = req.body.status;
+
+  const sql = "UPDATE reservaciones SET estado = ? WHERE reservaID = ?";
+  connection.query(sql, [newStatus, id], (err, result) => {
+    if (err) {
+      console.error("Error updating reservation status: ", err);
+      res.status(500).send("Error updating reservation status");
+      return;
+    }
+
+    res.send("Reservation status updated successfully");
   });
 });
 

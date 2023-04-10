@@ -24,7 +24,7 @@ export default function About() {
     });
   };
   return (
-    <article className="about-section">
+    <article id="about" className="about-section">
       <section>
         <div className="about-top">
           <div className="corner-box top-left"></div>
